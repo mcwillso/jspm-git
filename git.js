@@ -216,7 +216,7 @@ var createTempDir = function() {
   });
 };
 
-var GitLocation = function(options) {
+var GitLocation = function(options, ui) {
 
   logging = options.log === false ? false : true;
 
@@ -238,8 +238,8 @@ var GitLocation = function(options) {
     cwd: options.tmpDir,
     timeout: options.timeout * 1000,
     killSignal: 'SIGKILL',
-    maxBuffer: this.maxRepoSize || 2 * 1024 * 1024
-  };
+    maxBuffer: this.maxRepoSize || 2 * 1024 * 1024,
+    env: extend({}, process.env)
 
   if (typeof options.version !== 'string') {
     options.version = '1.0';
@@ -257,6 +257,7 @@ var GitLocation = function(options) {
   if (options.auth) {
     this.auth = decodeCredentials(options.auth);
   }
+  this.ui = ui;
 };
 
 // static configuration function
