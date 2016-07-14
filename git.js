@@ -240,6 +240,7 @@ var GitLocation = function(options, ui) {
     killSignal: 'SIGKILL',
     maxBuffer: this.maxRepoSize || 2 * 1024 * 1024,
     env: extend({}, process.env)
+  };
 
   if (typeof options.version !== 'string') {
     options.version = '1.0';
