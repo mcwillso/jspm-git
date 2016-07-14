@@ -238,8 +238,7 @@ var GitLocation = function(options, ui) {
     cwd: options.tmpDir,
     timeout: options.timeout * 1000,
     killSignal: 'SIGKILL',
-    maxBuffer: this.maxRepoSize || 2 * 1024 * 1024,
-    env: extend({}, process.env)
+    maxBuffer: this.maxRepoSize || 2 * 1024 * 1024
   };
 
   if (typeof options.version !== 'string') {
